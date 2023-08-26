@@ -1,4 +1,4 @@
-import { useState, useEffect } from "preact/hooks";
+import { useState, useEffect } from "react";
 import PhMoonStarsFill from "~icons/ph/moon-stars-fill";
 import PhSunFill from "~icons/ph/sun-fill";
 
@@ -21,7 +21,7 @@ export default function ToggleTheme() {
 
   return (
     <button
-      class="w-10 h-10 flex items-center justify-center rounded-md hover:bg-neutral-300 dark:hover:bg-neutral-800"
+      className="w-10 h-10 flex items-center justify-center rounded-md hover:bg-neutral-300 dark:hover:bg-neutral-800"
       onClick={toggleTheme}
     >
       {theme === "dark" ? (
@@ -29,7 +29,7 @@ export default function ToggleTheme() {
       ) : (
         <PhSunFill style={{ fontSize: "1.5em" }} />
       )}
-      <span class="sr-only">Toggle Theme</span>
+      <span className="sr-only">Toggle Theme</span>
     </button>
   );
 }

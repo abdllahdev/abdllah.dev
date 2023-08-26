@@ -4,9 +4,8 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import rehypePrettyCode from "rehype-pretty-code";
 import remarkReadingTime from "./src/plugins/remark-reading-time.mjs";
-import preact from "@astrojs/preact";
-import compress from "astro-compress";
 import Icons from "unplugin-icons/vite";
+import react from "@astrojs/react";
 
 const rehypePrettyCodeOptions = {
   theme: "dracula",
@@ -31,7 +30,7 @@ const rehypePrettyCodeOptions = {
 // https://astro.build/config
 export default defineConfig({
   site: "https://abdllah.dev",
-  integrations: [mdx(), sitemap(), tailwind(), preact(), compress()],
+  integrations: [mdx(), sitemap(), tailwind(), react()],
   markdown: {
     extendDefaultPlugins: true,
     syntaxHighlight: false,
@@ -45,7 +44,7 @@ export default defineConfig({
     plugins: [
       Icons({
         compiler: "jsx",
-        jsx: "preact",
+        jsx: "react",
         autoInstall: true,
       }),
     ],
