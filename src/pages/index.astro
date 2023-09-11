@@ -22,8 +22,8 @@ import { Github, Rss, Twitter } from "lucide-react";
 <BaseLayout>
   <div class="space-y-10">
     <div class="space-y-4">
-      <h1 class="text-3xl sm:text-4xl text-black dark:text-white font-extrabold">
-        Hello there! <span class="underline underline-offset-2 decoration-text">I'm Abdullah</span>
+      <h1 class="text-3xl font-extrabold text-black dark:text-white sm:text-4xl">
+        Hello there! <span class="decoration-text underline underline-offset-2">I'm Abdullah</span>
       </h1>
       <p>
         Welcome to my blog! I'm a software engineer with experience in <span class="underline"
@@ -43,7 +43,7 @@ import { Github, Rss, Twitter } from "lucide-react";
           target="_blank"
           class={buttonVariants({ variant: "outline" })}
         >
-          <Twitter className="sm:mr-2 h-4 w-4" />
+          <Twitter className="h-4 w-4 sm:mr-2" />
           <span class="hidden sm:block">Twitter</span>
         </a>
         <a
@@ -51,11 +51,11 @@ import { Github, Rss, Twitter } from "lucide-react";
           target="_blank"
           class={buttonVariants({ variant: "outline" })}
         >
-          <Github className="sm:mr-2 h-4 w-4" />
+          <Github className="h-4 w-4 sm:mr-2" />
           <span class="hidden sm:block">GitHub</span>
         </a>
         <a href="/rss.xml" target="_blank" class={buttonVariants({ variant: "outline" })}>
-          <Rss className="sm:mr-2 h-4 w-4" />
+          <Rss className="h-4 w-4 sm:mr-2" />
           <span class="hidden sm:block">RSS</span>
         </a>
       </div>

@@ -17,13 +17,13 @@ const { title, description, postMeta } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="font-sans dark">
+<html lang="en" class="dark font-sans">
   <head>
     <BaseHead title={title} description={description} postMeta={postMeta} />
   </head>
-  <body class="relative space-y-10 flex flex-col justify-between h-screen">
+  <body class="relative flex h-screen flex-col justify-between space-y-10">
     <Header />
-    <main class="container mx-auto md:max-w-4xl px-4 flex-grow pt-16">
+    <main class="container mx-auto grow px-4 pt-16 md:max-w-4xl">
       <slot />
     </main>
     <Footer />

@@ -15,7 +15,11 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Helvetica Neue", ...defaultTheme.fontFamily.sans],
-        righteous: ["Righteous", "Helvetica Neue", ...defaultTheme.fontFamily.sans],
+        righteous: [
+          "Righteous",
+          "Helvetica Neue",
+          ...defaultTheme.fontFamily.sans,
+        ],
       },
       colors: {
         border: "hsl(var(--border))",

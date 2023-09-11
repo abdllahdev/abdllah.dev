@@ -11,14 +11,14 @@ const { post } = Astro.props;
 
 <a
   href={!post.data.planned ? `/blog/${post.slug}` : null}
-  class={`space-y-2 flex flex-col items-start rounded-lg p-5 bg-neutral-300 hover:bg-neutral-400 dark:bg-neutral-800 dark:hover:bg-neutral-700`}
+  class={`flex flex-col items-start space-y-2 rounded-lg bg-neutral-300 p-5 hover:bg-neutral-400 dark:bg-neutral-800 dark:hover:bg-neutral-700`}
 >
   <div class="space-y-1">
     <div class="flex items-center space-x-2">
-      <h2 class="text-xl text-black dark:text-white font-bold">{post.data.title}</h2>
+      <h2 class="text-xl font-bold text-black dark:text-white">{post.data.title}</h2>
       {
         post.data.planned && (
-          <span class="flex items-center justify-center p-0.5 px-1.5 bg-amber-500 rounded-full text-black font-black text-xs">
+          <span class="flex items-center justify-center rounded-full bg-amber-500 p-0.5 px-1.5 text-xs font-black text-black">
             Planned
           </span>
         )

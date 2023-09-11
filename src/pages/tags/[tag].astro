@@ -19,7 +19,7 @@ const posts = (await getCollection("blog"))
 ---
 
 <BaseLayout title={`Posts about #${t?.toUpperCase()}`}>
-  <h1 class="text-black dark:text-white pb-10 uppercase font-black text-4xl">
+  <h1 class="pb-10 text-4xl font-black uppercase text-black dark:text-white">
     {`#${t?.toUpperCase()}`}
   </h1>
   <PostsList posts={posts} />
