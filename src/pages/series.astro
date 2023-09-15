@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import SeriesList from "../components/SeriesList.astro";
+import BaseLayout from "@/layouts/base-layout.astro";
+import SeriesList from "@/components/series-list.astro";
 
-const series = await getCollection("series");
+const series = (await getCollection("series")).filter((s) => s.data.published);
 ---
 
 <BaseLayout title="All series">

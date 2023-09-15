@@ -1,14 +1,14 @@
 ---
 import { getCollection } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import PostsList from "../../components/PostsList.astro";
+import BaseLayout from "@/layouts/base-layout.astro";
+import Posts from "@/components/posts.astro";
 
 const posts = (await getCollection("blog"))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .filter((post) => !post.data.planned);
+  .filter((post) => !post.data.planned && post.data.published);
 ---
 
 <BaseLayout title="All posts">
-  <h1 class="pb-10 text-4xl text-black dark:text-white">All Posts</h1>
-  <PostsList posts={posts} />
+  <h1 class="pb-4 text-3xl">All Posts</h1>
+  <Posts posts={posts} />
 </BaseLayout>

@@ -75,3 +75,30 @@
     @apply bg-background text-foreground;
   }
 }
+
+div[data-rehype-pretty-code-fragment] {
+  @apply space-y-0;
+}
+
+div[data-rehype-pretty-code-fragment] pre {
+  @apply overflow-x-auto rounded-md rounded-t-none border border-zinc-800 bg-zinc-950 p-0 py-2;
+}
+
+div[data-rehype-pretty-code-fragment] code {
+  counter-reset: line;
+  @apply flex flex-col;
+}
+
+div[data-rehype-pretty-code-fragment] .line::before {
+  counter-increment: line;
+  content: counter(line);
+  @apply pr-4;
+}
+
+div[data-rehype-pretty-code-fragment] .line {
+  @apply border-l-4 border-transparent px-3;
+}
+
+div[data-rehype-pretty-code-fragment] .highlighted {
+  @apply border-blue-600 bg-blue-600/20;
+}

@@ -1,6 +1,4 @@
 ---
-import TableOfContentHeading from "./TableOfContentHeading.astro";
-
 type TableOfContent = {
   depth: number;
   text: string;
@@ -18,7 +16,7 @@ function buildToc(headings: Heading[]): TableOfContent[] {
   const toc: TableOfContent[] = [];
   const parentHeadings = new Map();
 
-  headings.forEach((h) => {
+  headings?.forEach((h) => {
     const heading = { ...h, subheadings: new Array<TableOfContent>() };
     parentHeadings.set(heading.depth, heading);
 
@@ -39,6 +37,21 @@ const toc = buildToc(headings);
 
 <div class="not-prose">
   <ul class="list-outside list-disc">
-    {toc.map((heading) => <TableOfContentHeading heading={heading} />)}
+    {toc.map((heading) => (
+      <li class="ml-4">
+        <a class="text-black dark:text-white hover:underline underline-offset-2" href={"#" + heading.slug}>
+          {heading.text}
+        </a>
+        {
+          heading.subheadings.length > 0 && (
+            <ul class="list-outside list-disc">
+              {heading.subheadings.map((subheading) => (
+                <Astro.self heading={subheading} />
+              ))}
+            </ul>
+          )
+        }
+      </li>
+    ))}
   </ul>
 </div>

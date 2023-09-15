@@ -17,7 +17,7 @@ const blog = defineCollection({
         .string()
         .array()
         .transform((tags) => tags.map((tag) => `#${tag}`)),
-      draft: z.boolean().default(false),
+      published: z.boolean().default(false),
       featured: z.boolean().default(false),
       planned: z.boolean().default(false),
       seriesId: z.string().optional(),
@@ -45,6 +45,7 @@ const series = defineCollection({
     title: z.string(),
     description: z.string(),
     featured: z.boolean().default(false),
+    published: z.boolean().default(false),
   }),
 });
 

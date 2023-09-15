@@ -1,0 +1,19 @@
+---
+import { Button, buttonVariants } from "@/components/ui/button";
+import BaseLayout from "@/layouts/base-layout.astro";
+import { cn } from "@/lib/cn";
+import { ArrowLeft } from "lucide-react";
+---
+
+<BaseLayout title="404: Not found">
+  <div class="flex flex-col items-center justify-center h-full space-y-4">
+    <div class="flex flex-col items-center space-y-2">
+      <span class="text-9xl font-black">404</span>
+      <span class="text-3xl font-semibold">Oops, page not found</span>
+    </div>
+    <a href="/" class={cn(buttonVariants({variant: "outline"}), "inline-flex items-center justify-center space-x-2")}>
+      <ArrowLeft className="h-4 w-4" />
+      <span>Go back</span>
+    </a>
+  </div>
+</BaseLayout>
