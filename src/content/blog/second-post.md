@@ -1,7 +1,7 @@
 ---
 title: "Second post"
-description: "Lorem ipsum dolor sit amet"
-cover: "@/assets/post-covers/cover.png"
+description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel hendrerit lorem, eu vehicula urna. Nullam eu tincidunt est. Duis rhoncus libero vel lacus pharetra, non venenatis tellus tincidunt."
+cover: "@/assets/covers/cover1.png"
 coverAlt: "Hero Image"
 seriesId: first-series
 index: 2
@@ -9,6 +9,7 @@ pubDate: "22 Jul 2022"
 updatedDate: "25 Jul 2023"
 tags:
   - second-post
+published: true
 ---
 
 ## Sub-Heading-1

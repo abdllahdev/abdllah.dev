@@ -3,12 +3,14 @@ title: "Markdown Style Guide"
 description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel hendrerit lorem, eu vehicula urna. Nullam eu tincidunt est. Duis rhoncus libero vel lacus pharetra, non venenatis tellus tincidunt."
 seriesId: first-series
 index: 5
-pubDate: "Jul 01 2022"
-cover: "@/assets/post-covers/cover.png"
+pubDate: "Aug 01 2022"
+cover: "@/assets/covers/cover3.png"
 coverAlt: "Hero Image"
 tags:
   - markdown
   - guide
+pinned: true
+published: true
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
@@ -29,7 +31,7 @@ Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptio
 
 ## Images
 
-![This is a placeholder image description](@/assets/post-covers/cover.png)
+![This is a placeholder image description](@/assets/covers/cover3.png)
 
 ## Blockquotes
 
