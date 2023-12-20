@@ -51,6 +51,7 @@ const project = defineCollection({
     id: z.string(),
     title: z.string(),
     link: z.string().optional(),
+    published: z.boolean().default(false),
     description: z.string(),
     tags: z
       .string()
