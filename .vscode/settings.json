@@ -9,6 +9,5 @@
   "[mdx]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.formatOnSave": true,
-  "mdx.experimentalLanguageServer": true
+  "editor.formatOnSave": true
 }

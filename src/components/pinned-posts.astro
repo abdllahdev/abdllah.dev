@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "@/components/formatted-date.astro";
 import Pill from "@/components/pill.astro";
@@ -20,9 +21,11 @@ const { posts } = Astro.props;
           href={`/blog/${post.slug}`}
           class="relative isolate flex h-80 flex-col rounded-lg border text-card-foreground shadow-sm hover:bg-muted"
         >
-          <img
-            src={post.data.cover?.src}
+          <Image
+            src={post.data.cover}
             alt={post.data.title}
+            width={1024}
+            height={768}
             class="absolute inset-0 h-full w-full rounded-lg object-cover"
           />
           <div
