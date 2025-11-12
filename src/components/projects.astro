@@ -1,52 +1,67 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
 import { ExternalLink } from "lucide-preact";
-import { buttonVariants } from "@/lib/button-utils";
-import { cn } from "@/lib/utils";
+import weldrIcon from "@/assets/logos/weldr.png";
 
-export interface Props {
-	projects: CollectionEntry<"project">[];
-}
-
-const { projects } = Astro.props;
+// Projects data
+const projects = [
+	{
+		name: "Weldr",
+		description:
+			"Chat-native AI coding platform where agents generate working codebases and model repositories as semantic call graphs, with visual canvas highlighting key architectural components for instant comprehension.",
+		link: "https://github.com/weldr-ai/weldr",
+		icon: weldrIcon,
+	},
+	{
+		name: "Thoth",
+		description:
+			"Statically-typed DSL that unifies database, server, and client tiers into a single program, compiling to production-ready TypeScript and reducing boilerplate by up to 70%.",
+		link: "https://github.com/abdllahdev/thoth",
+	},
+];
 ---
 
-<section class="space-y-8">
-  <h2 class="text-2xl font-bold">Projects</h2>
-  <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
-    {
-      projects.map((project) => (
-        <div class="flex flex-col justify-between gap-y-2 rounded-lg border bg-card p-6 text-card-foreground shadow-sm">
-          <div class="flex flex-col gap-y-2">
-            <div class="flex items-center justify-between">
-              <h3 class="text-xl font-semibold leading-none tracking-tight">
-                {project.data.title}
-              </h3>
-              {project.data.link && (
-                <a
-                  href={project.data.link}
-                  target="_blank"
-                  class={cn(
-                    buttonVariants({ variant: "ghost" }),
-                    "h-7 w-7 p-1"
-                  )}
-                >
-                  <ExternalLink class="h-3.5 w-3.5" />
-                  <span class="sr-only">Project external link</span>
-                </a>
-              )}
-            </div>
-            <p class="text-sm text-muted-foreground">
-              {project.data.description}
-            </p>
-          </div>
-          <ul class="flex flex-wrap gap-x-2 text-sm text-muted-foreground">
-            {project.data.tags.map((tag: string) => (
-              <li class="underline underline-offset-2">{tag}</li>
-            ))}
-          </ul>
-        </div>
-      ))
-    }
-  </div>
-</section>
+<div class="space-y-8">
+	<h2 class="text-2xl font-bold">Projects</h2>
+	<ul class="space-y-3">
+		{
+			projects.map((project) => (
+				<li class="flex items-start gap-3">
+					<div class="shrink-0 w-10 h-10 rounded-lg overflow-hidden">
+						{project.icon ? (
+							<Image
+								src={project.icon}
+								alt={`${project.name} logo`}
+								class="w-full h-full object-cover"
+							/>
+						) : (
+							<div class="w-full h-full bg-muted flex items-center justify-center text-sm font-medium">
+								{project.name.charAt(0)}
+							</div>
+						)}
+					</div>
+					<div class="min-w-0 flex-1">
+						<div class="flex items-center justify-between gap-4">
+							<span class="font-medium text-base">{project.name}</span>
+							<a
+								href={project.link}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="text-xs text-muted-foreground hover:underline underline-offset-2 shrink-0 flex items-center gap-1"
+							>
+								{project.link.replace(/^https?:\/\//, '')}
+								<ExternalLink class="h-3 w-3" />
+							</a>
+						</div>
+						{project.description && (
+							<p class="text-xs text-muted-foreground mt-0.5">
+								{project.description}
+							</p>
+						)}
+					</div>
+				</li>
+			))
+		}
+	</ul>
+</div>
+

@@ -1,9 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import Pill from "@/components/pill.astro";
 
 export interface Props {
-	posts: Map<number, CollectionEntry<"blog">[]>;
+	posts: CollectionEntry<"blog">[];
 }
 
 const months = [
@@ -24,46 +23,18 @@ const months = [
 const { posts } = Astro.props;
 ---
 
-<>
+<ul class="space-y-3">
   {
-    [...posts.keys()].map((year) => {
-      return (
-        <>
-          <h3 class="my-4 text-lg font-semibold">{year}</h3>
-          {posts.get(year)?.map((post) => (
-            <a
-              href={`blog/${post.slug}`}
-              class="flex w-full justify-between rounded-lg px-2 py-4 hover:bg-muted md:px-6"
-            >
-              <div class=" hidden space-x-4 md:flex">
-                <span class=" whitespace-nowrap text-muted-foreground ">{`${post.data.pubDate.getDay()} ${
-                  months[post.data.pubDate.getMonth()]
-                }`}</span>
-                <span>{post.data.title}</span>
-              </div>
-
-              {post.data.isWorkInProgress && (
-                <div class="hidden md:block">
-                  <Pill variant="warning" content="Work in Progress" />
-                </div>
-              )}
-
-              <div class="flex  flex-col md:hidden">
-                <span>{post.data.title}</span>
-
-                <div class="flex items-center justify-between">
-                  <span class="whitespace-nowrap text-muted-foreground">{`${post.data.pubDate.getDay()} ${
-                    months[post.data.pubDate.getMonth()]
-                  }`}</span>
-                  {post.data.isWorkInProgress && (
-                    <Pill variant="warning" content="Work in Progress" />
-                  )}
-                </div>
-              </div>
-            </a>
-          ))}
-        </>
-      );
-    })
+    posts.map((post) => (
+      <li>
+        <span class="text-sm text-muted-foreground">{`${post.data.pubDate.getDate()} ${
+          months[post.data.pubDate.getMonth()]
+        }`}</span>
+        {" "}
+        <a href={`blog/${post.slug}`} class="text-base hover:underline">
+          {post.data.title}
+        </a>
+      </li>
+    ))
   }
-</>
+</ul>

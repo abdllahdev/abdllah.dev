@@ -1,7 +1,7 @@
 import type { CollectionEntry } from "astro:content";
 import { ChevronDown, ChevronUp } from "lucide-preact";
 import { useState } from "preact/hooks";
-import Pill from "@/components/pill.astro";
+import { Pill } from "@/components/pill";
 import { cn } from "@/lib/utils";
 
 interface Props {

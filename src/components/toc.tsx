@@ -89,64 +89,69 @@ export function Toc({ headings }: Props) {
 	}, [getSectionHeights, updateProgressBar]);
 
 	return (
-		<ul
-			aria-label="Steps"
-			class="relative flex h-full flex-col font-semibold text-foreground"
-		>
-			{sections.map((section, idx) => (
-				<>
-					{idx === 0 && (
+		<div class="relative h-full">
+			<div class="absolute top-0 left-[0.44rem] h-full w-0.5 bg-muted" />
+			<div
+				class="absolute top-0 left-[0.44rem] z-10 w-0.5 bg-primary transition-all duration-300"
+				style={{ height: `${progress}%` }}
+			/>
+			<ul
+				aria-label="Steps"
+				class="relative flex h-full flex-col font-semibold text-foreground"
+			>
+				{sections.map((section, idx) => (
+					<>
+						{idx === 0 && (
+							<li
+								class="flex w-full gap-x-4"
+								style={{ height: `${sectionHeights?.before}%` }}
+							>
+								<div class="ml-[0.44rem]" />
+							</li>
+						)}
 						<li
 							class="flex w-full gap-x-4"
-							style={{ height: `${sectionHeights?.before}%` }}
+							style={{ height: `${sectionHeights[section.slug]}%` }}
+							aria-current={currentSection === idx + 1 ? "step" : false}
 						>
-							<div class="ml-[0.44rem] border-l-2 border-l-muted"></div>
-						</li>
-					)}
-					<li
-						class="flex w-full gap-x-4"
-						style={{ height: `${sectionHeights[section.slug]}%` }}
-						aria-current={currentSection === idx + 1 ? "step" : false}
-					>
-						<div class="flex flex-col items-start">
-							<a
-								class="z-10 hidden h-4 items-center justify-center gap-x-4 text-xs xl:flex"
-								href={`#${section.slug}`}
-							>
-								<div
-									class={cn(
-										"flex h-4 w-4 flex-none items-center justify-center rounded-full border-2 bg-background",
-										{
-											"border-primary bg-primary":
-												currentSection > idx + 1 || progress === 100,
-											"border-primary": currentSection === idx + 1,
-										},
-									)}
+							<div class="flex flex-col items-start">
+								<a
+									class="z-20 hidden h-4 items-center justify-center gap-x-4 text-xs xl:flex"
+									href={`#${section.slug}`}
 								>
-									<span
-										class={cn("h-1 w-1 rounded-full bg-primary", {
-											hidden: currentSection !== idx + 1 || progress === 100,
+									<div
+										class={cn(
+											"flex h-4 w-4 flex-none items-center justify-center rounded-full border-2 bg-background",
+											{
+												"border-primary bg-primary":
+													currentSection > idx + 1 || progress === 100,
+												"border-primary": currentSection === idx + 1,
+											},
+										)}
+									>
+										<span
+											class={cn("h-1 w-1 rounded-full bg-primary", {
+												hidden: currentSection !== idx + 1 || progress === 100,
+											})}
+										/>
+										{(currentSection > idx + 1 || progress === 100) && (
+											<Check />
+										)}
+									</div>
+									<p
+										class={cn({
+											"text-primary": currentSection === idx + 1,
 										})}
-									></span>
-									{(currentSection > idx + 1 || progress === 100) && <Check />}
-								</div>
-								<p
-									class={cn({
-										"text-primary": currentSection === idx + 1,
-									})}
-								>
-									{section.text}
-								</p>
-							</a>
-							<div class="ml-[0.44rem] h-full border-l-2 border-l-muted"></div>
-						</div>
-					</li>
-				</>
-			))}
-			<div
-				class="absolute top-0 left-[0.44rem] z-0 border-l-2 border-l-primary!"
-				style={{ height: `${progress}%` }}
-			></div>
-		</ul>
+									>
+										{section.text}
+									</p>
+								</a>
+								<div class="ml-[0.44rem] h-full" />
+							</div>
+						</li>
+					</>
+				))}
+			</ul>
+		</div>
 	);
 }

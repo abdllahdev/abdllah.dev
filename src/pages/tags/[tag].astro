@@ -20,17 +20,6 @@ const { tag: t } = Astro.params;
 const posts = (await getCollection("blog"))
 	.filter((post) => post.data.tags.includes(`#${t}`))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-const sortedPostsByYear = new Map<number, CollectionEntry<"blog">[]>();
-
-posts.forEach((post) => {
-	const year = post.data.pubDate.getFullYear();
-	if (sortedPostsByYear.has(year)) {
-		sortedPostsByYear.get(year)?.push(post);
-	} else {
-		sortedPostsByYear.set(year, [post]);
-	}
-});
 ---
 
 <BaseLayout title={`Posts about #${t}`}>
@@ -47,6 +36,6 @@ posts.forEach((post) => {
     <h1 class="pb-4 text-3xl">
       {`#${t}`}
     </h1>
-    <Posts posts={sortedPostsByYear} />
+    <Posts posts={posts} />
   </div>
 </BaseLayout>

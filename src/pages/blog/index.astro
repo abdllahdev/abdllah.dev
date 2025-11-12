@@ -8,17 +8,6 @@ import { cn } from "@/lib/utils";
 const posts = (await getCollection("blog"))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 	.filter((post) => !post.data.planned && post.data.published);
-
-const sortedPostsByYear = new Map<number, CollectionEntry<"blog">[]>();
-
-posts.forEach((post) => {
-	const year = post.data.pubDate.getFullYear();
-	if (sortedPostsByYear.has(year)) {
-		sortedPostsByYear.get(year)?.push(post);
-	} else {
-		sortedPostsByYear.set(year, [post]);
-	}
-});
 ---
 
 <BaseLayout title="All posts">
@@ -33,6 +22,6 @@ posts.forEach((post) => {
       ← Home
     </a>
     <h1 class="pb-4 text-3xl">All Posts</h1>
-    <Posts posts={sortedPostsByYear} />
+    <Posts posts={posts} />
   </div>
 </BaseLayout>

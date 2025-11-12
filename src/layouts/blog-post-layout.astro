@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { type CollectionEntry, getCollection } from "astro:content";
 import { ArrowLeft } from "lucide-preact";
 import FormattedDate from "@/components/formatted-date.astro";
@@ -8,7 +9,7 @@ import BaseLayout from "@/layouts/base-layout.astro";
 import { buttonVariants } from "@/lib/button-utils";
 import { cn } from "@/lib/utils";
 
-type Blog = CollectionEntry<"blog">["data"];
+type BlogPost = CollectionEntry<"blog">["data"];
 
 type Heading = {
 	depth: number;
@@ -16,7 +17,7 @@ type Heading = {
 	text: string;
 };
 
-export interface Props extends Blog {
+export type Props = BlogPost & {
 	readingTime: string;
 	headings: Heading[];
 }
@@ -31,6 +32,7 @@ const {
 	headings,
 	seriesId,
 	index,
+	cover,
 } = Astro.props;
 
 const series = (await getCollection("series")).find(
@@ -62,6 +64,13 @@ const posts = (await getCollection("blog"))
       >
         ← Home
       </a>
+      <Image
+        src={cover}
+        alt={title}
+        width={1024}
+        height={768}
+        class="not-prose mb-8 rounded-lg border"
+      />
       <div class="space-y-2">
         <h1 id="title">{title}</h1>
         <div

@@ -25,9 +25,9 @@ const { title, postData } = Astro.props;
   <head>
     <BaseHead postData={postData} title={title} />
   </head>
-  <body class="flex min-h-screen flex-col space-y-10">
+  <body class="flex min-h-screen flex-col">
     <Header postTitle={postData?.title} />
-    <main class="flex flex-grow justify-center">
+    <main class="flex grow justify-center py-10">
       <slot />
     </main>
     <Footer />
