@@ -30,6 +30,17 @@ import { cn } from "@/lib/utils";
       <h2 class="text-sm font-medium text-muted-foreground">Connect</h2>
       <div class="flex items-center gap-1">
         <a
+          href=`https://github.com/${GITHUB_HANDLE}`
+          target="_blank"
+          class={cn(
+            buttonVariants({ variant: "outline", size: "icon" }),
+            "h-8 w-8"
+          )}
+        >
+          <Github class="size-3.5" />
+          <span class="sr-only">Github</span>
+        </a>
+        <a
           href=`https://x.com/${X_HANDLE}`
           target="_blank"
           class={cn(
@@ -58,17 +69,6 @@ import { cn } from "@/lib/utils";
         >
           <Linkedin class="size-3.5" />
           <span class="sr-only">LinkedIn</span>
-        </a>
-        <a
-          href=`https://github.com/${GITHUB_HANDLE}`
-          target="_blank"
-          class={cn(
-            buttonVariants({ variant: "outline", size: "icon" }),
-            "h-8 w-8"
-          )}
-        >
-          <Github class="size-3.5" />
-          <span class="sr-only">Github</span>
         </a>
         <a
           href="/rss.xml"
